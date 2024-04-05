@@ -2,11 +2,14 @@
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
+import {DeployHelper} from "./DeployHelper.sol";
 
-contract CounterScript is Script {
+contract DeployScript is Script, DeployHelper {
     function setUp() public {}
 
     function run() public {
         vm.broadcast();
+        _deployImplementationAndProxy();
+        vm.stopBroadcast();
     }
 }
