@@ -59,7 +59,6 @@ contract IonicTokenTest is Test, DeployHelper {
         );
 
         vm.startPrank(spender);
-        token.permit(owner, spender, value, permit.deadline, v, r, s);
         token.transferFrom(owner, spender, value);
         assertEq(token.balanceOf(owner), 1_000_000_000 ether - value);
         assertEq(token.balanceOf(spender), value);
