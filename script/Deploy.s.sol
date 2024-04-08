@@ -4,12 +4,13 @@ pragma solidity ^0.8.13;
 import {Script, console} from "forge-std/Script.sol";
 import {DeployHelper} from "./DeployHelper.sol";
 
-contract DeployScript is Script, DeployHelper {
+contract DeployMode is Script, DeployHelper {
     function setUp() public {}
 
     function run() public {
-        vm.broadcast();
-        _deployImplementationAndProxy();
+        address multisig = 0x6EAC39BBe26f0d6Ab8DF0f974734D2228d4Da226;
+        vm.startBroadcast();
+        _deployImplementationAndProxy(multisig);
         vm.stopBroadcast();
     }
 }
