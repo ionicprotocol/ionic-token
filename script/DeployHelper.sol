@@ -8,11 +8,11 @@ import {ERC1967Utils} from "openzeppelin-contracts/contracts/proxy/ERC1967/ERC19
 
 contract DeployHelper {
     IonicToken public token;
-    function _deployImplementationAndProxy(address owner) internal {
+    function _deployImplementationAndProxy(address owner, bool isCanonical) internal {
         // Deploy the proxy and initialize the contract through the proxy
         address proxy = Upgrades.deployUUPSProxy(
             "IonicToken.sol",
-            abi.encodeCall(IonicToken.initialize, (owner))
+            abi.encodeCall(IonicToken.initialize, (owner, isCanonical))
         );
         token = IonicToken(proxy);
     }

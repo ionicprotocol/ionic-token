@@ -11,3 +11,4 @@ solc_version = "0.8.23"
 [rpc_endpoints]
 mode = "https://mainnet.mode.network"
 base = "https://mainnet.base.org"
+optimism = "https://mainnet.optimism.io"

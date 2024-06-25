@@ -31,13 +31,17 @@ contract IonicToken is
         _disableInitializers();
     }
 
-    function initialize(address initialOwner) public initializer {
+    function initialize(
+        address initialOwner,
+        bool isCanonical
+    ) public initializer {
         __ERC20_init("Ionic", "ION");
         __Ownable_init(initialOwner);
         __ERC20Permit_init("Ionic");
         __UUPSUpgradeable_init();
-
-        _mint(msg.sender, 1_000_000_000 * 10 ** decimals());
+        if (isCanonical) {
+            _mint(msg.sender, 1_000_000_000 * 10 ** decimals());
+        }
     }
 
     /// XERC20 SPECIFIC FUNCTIONALITY
