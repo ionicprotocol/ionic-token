@@ -58,3 +58,14 @@ contract DeployFraxtal is Script, DeployHelper {
         vm.stopBroadcast();
     }
 }
+
+contract DeployLisk is Script, DeployHelper {
+    function setUp() public {}
+
+    function run() public {
+        address multisig = 0x03A376468888cee39Fa23C234201Ba704992e030;
+        vm.startBroadcast();
+        _deployImplementationAndProxy(multisig, false);
+        vm.stopBroadcast();
+    }
+}

@@ -13,7 +13,7 @@ contract IonicTokenTest is Test, DeployHelper {
     function setUp() public {
         (owner, ownerPk) = makeAddrAndKey("alice");
         vm.startPrank(owner);
-        _deployImplementationAndProxy(msg.sender);
+        _deployImplementationAndProxy(msg.sender, true);
         vm.stopPrank();
 
         sigUtils = new SigUtils(token.DOMAIN_SEPARATOR());
